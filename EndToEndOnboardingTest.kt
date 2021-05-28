@@ -1,11 +1,6 @@
 package de.rki.coronawarnapp.ui
 
-
 import android.content.Context
-import android.content.Intent
-import android.content.res.Configuration
-import android.util.Log
-import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
@@ -18,18 +13,14 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import de.rki.coronawarnapp.R
 import de.rki.coronawarnapp.ui.onboarding.OnboardingActivity
-import org.junit.Assert
 import org.junit.Assert.assertEquals
-import org.junit.Assert.fail
 import org.junit.Rule
 import org.junit.Test
-import org.junit.internal.runners.statements.Fail
 import org.junit.runner.RunWith
 import java.util.Locale
 
-
 @RunWith(AndroidJUnit4ClassRunner::class)
-class OnboardingActivityTest {
+class EndToEndOnboardingTest {
 
     @get: Rule
     val activityScenario: ActivityScenarioRule<OnboardingActivity> = ActivityScenarioRule(
