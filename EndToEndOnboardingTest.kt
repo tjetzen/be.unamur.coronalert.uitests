@@ -184,6 +184,9 @@ class EndToEndOnboardingTest {
 
         // act
         nxtBtn4.perform(click())
+        Thread.sleep(2000)
+
+        // todo: test doesn't finish execution
 
         // assert
         intended(hasComponent(MainActivity::class.java.getName()))
