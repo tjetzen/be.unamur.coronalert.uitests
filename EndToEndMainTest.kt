@@ -107,7 +107,7 @@ class EndToEndMainTest {
         val menuBtn = onView(withId(R.id.main_header_options_menu))
         menuBtn.perform(scrollTo(), click())
 
-        val menuItem = onView(allOf(withId(android.R.id.title), withText("Settings")))
+        val menuItem = onView(allOf(withId(android.R.id.title), withText(R.string.settings_title)))
         menuItem.perform(click())
 
         // handle popup if exposure notifications are not activated
