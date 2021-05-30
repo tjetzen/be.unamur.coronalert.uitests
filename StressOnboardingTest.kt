@@ -2,16 +2,16 @@ package de.rki.coronawarnapp.be.unamur.coronalert.uitests
 
 import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import de.rki.coronawarnapp.ui.main.MainActivity
+import de.rki.coronawarnapp.ui.onboarding.OnboardingActivity
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 
-class StressMainTest {
+class StressOnboardingTest {
 
     @get: Rule
-    val activityScenario: ActivityScenarioRule<MainActivity> = ActivityScenarioRule(
-        MainActivity::class.java
+    val activityScenario: ActivityScenarioRule<OnboardingActivity> = ActivityScenarioRule(
+        OnboardingActivity::class.java
     )
 
     @Test
