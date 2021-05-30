@@ -72,6 +72,14 @@ class EndToEndOnboardingTest {
         // act
         nxtBtn2.perform(click())
 
+        val warningBtn: ViewInteraction = onView(
+            allOf(
+                withId(android.R.id.button1),
+                withParent(withParent(withId(R.id.buttonPanel)))
+            )
+        ) // warning
+        warningBtn.perform(click())
+
         // assert
         onView(withId(R.id.onboarding_headline)).check(matches(withText(R.string.onboarding_tracing_headline)))
     }
