@@ -28,5 +28,13 @@ It aims to help the population to limit the spread of this virus by offering inf
 
 ## Getting started
 
-1. Clone this repository in the following directory: `C:\Users\MAXIME\WORKSPACES_SCHOOL\cwa-app-android\Corona-Warn-App\src\androidTest\java\de\rki\coronawarnapp`.
+1. Clone this repository in the following directory: `...\cwa-app-android\Corona-Warn-App\src\androidTest\java\de\rki\coronawarnapp`.
 2. Run the test plans from Android Studio after usual Gradle builds and Android running tasks.
+
+## `build.gradle` adaptation
+
+Add in the `dependencies` section of the `build.gradle (Module: Corona-Warn.Corona-Warn-App)` this line :
+
+```groovy
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
+```

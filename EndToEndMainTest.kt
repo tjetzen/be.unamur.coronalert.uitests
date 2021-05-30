@@ -1,5 +1,4 @@
-package de.rki.coronawarnapp.ui
-
+package de.rki.coronawarnapp.be.unamur.coronalert.uitests
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
@@ -8,9 +7,6 @@ import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.matcher.IntentMatchers
-import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -18,16 +14,11 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import de.rki.coronawarnapp.R
 import de.rki.coronawarnapp.ui.main.MainActivity
 import de.rki.coronawarnapp.ui.onboarding.OnboardingActivity
-import org.hamcrest.Matchers
 import org.hamcrest.Matchers.allOf
 import org.joda.time.DateTime
 import org.junit.Rule
 import org.junit.Test
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Date
 
 class EndToEndMainTest {
 
@@ -36,13 +27,23 @@ class EndToEndMainTest {
         MainActivity::class.java
     )
 
-    private fun handle_popup_tapButton1(){
-        val btn: ViewInteraction = onView(allOf(withId(android.R.id.button1), withParent(withParent(withId(R.id.buttonPanel))))) // popup
+    private fun handle_popup_tapButton1() {
+        val btn: ViewInteraction = onView(
+            allOf(
+                withId(android.R.id.button1),
+                withParent(withParent(withId(R.id.buttonPanel)))
+            )
+        ) // popup
         btn.perform(click())
     }
 
-    private fun handle_popup_tapButton2(){
-        val btn: ViewInteraction = onView(allOf(withId(android.R.id.button2), withParent(withParent(withId(R.id.buttonPanel))))) // popup
+    private fun handle_popup_tapButton2() {
+        val btn: ViewInteraction = onView(
+            allOf(
+                withId(android.R.id.button2),
+                withParent(withParent(withId(R.id.buttonPanel)))
+            )
+        ) // popup
         btn.perform(click())
     }
 
@@ -50,7 +51,7 @@ class EndToEndMainTest {
         handle_popup_tapButton1()
     }
 
-    private fun handle_popup_tapNo(){
+    private fun handle_popup_tapNo() {
         handle_popup_tapButton2()
     }
 
@@ -58,23 +59,26 @@ class EndToEndMainTest {
         handle_popup_tapButton1()
     }
 
-    private fun handle_popup_tapReset(){
+    private fun handle_popup_tapReset() {
         handle_popup_tapButton1()
     }
 
     @Test
-    fun test_generateCode_generatesValidDate(){
+    fun test_generateCode_generatesValidDate() {
         // arrange
         Thread.sleep(2000)
         handle_popup_tapOk(); handle_popup_tapOk()
 
-        val receiveTestBtn: ViewInteraction = onView(withId(R.id.submission_status_card_unregistered_button)) // main page
+        val receiveTestBtn: ViewInteraction =
+            onView(withId(R.id.submission_status_card_unregistered_button)) // main page
         receiveTestBtn.perform(scrollTo(), click())
 
-        val nxtBtn: ViewInteraction = onView(withId(R.id.submission_intro_button_next)) // receive test page
+        val nxtBtn: ViewInteraction =
+            onView(withId(R.id.submission_intro_button_next)) // receive test page
         nxtBtn.perform(click())
 
-        val expectedDate:String = SimpleDateFormat("EEEE, d MMM y").format(DateTime().minusDays(2).toDate())
+        val expectedDate: String =
+            SimpleDateFormat("EEEE, d MMM y").format(DateTime().minusDays(2).toDate())
 
         // act
         handle_popup_tapNo() // popup symptoms checking
@@ -84,7 +88,7 @@ class EndToEndMainTest {
     }
 
     @Test
-    fun test_reinitialization(){
+    fun test_reinitialization() {
         // arrange
         Intents.init()
 
@@ -95,7 +99,7 @@ class EndToEndMainTest {
         Intents.intended(IntentMatchers.hasComponent(OnboardingActivity::class.java.getName()))
     }
 
-    private fun resetApplicationStateAtMainPage(){
+    private fun resetApplicationStateAtMainPage() {
         // handle popup if exposure notifications are not activated
         Thread.sleep(2000)
         handle_popup_tapOk();handle_popup_tapOk()
@@ -117,5 +121,4 @@ class EndToEndMainTest {
 
         handle_popup_tapReset()
     }
-
 }

@@ -1,4 +1,4 @@
-package de.rki.coronawarnapp.ui
+package de.rki.coronawarnapp.be.unamur.coronalert.uitests
 
 import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
