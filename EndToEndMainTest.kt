@@ -11,6 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import be.sciensano.coronalert.util.DateUtil
 import de.rki.coronawarnapp.R
 import de.rki.coronawarnapp.ui.main.MainActivity
 import de.rki.coronawarnapp.ui.onboarding.OnboardingActivity
@@ -18,6 +19,7 @@ import org.hamcrest.Matchers.allOf
 import org.joda.time.DateTime
 import org.junit.Rule
 import org.junit.Test
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 
 class EndToEndMainTest {
@@ -77,8 +79,8 @@ class EndToEndMainTest {
             onView(withId(R.id.submission_intro_button_next)) // receive test page
         nxtBtn.perform(click())
 
-        val expectedDate: String =
-            SimpleDateFormat("EEEE, d MMM y").format(DateTime().minusDays(2).toDate())
+        val expectedDate: String = DateFormat.getDateInstance(DateFormat.FULL)
+            .format(DateTime().minusDays(2).toDate())
 
         // act
         handle_popup_tapNo() // popup symptoms checking
