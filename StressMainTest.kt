@@ -18,9 +18,10 @@ class StressMainTest {
     fun test_simulate_randomActions() {
 
         // arrange + act
-        StressTestHelper.simulateRandomAction(50)
+        StressTestHelper.simulateRandomActions(50)
 
         // asserts
-        Assert.assertTrue(activityScenario.scenario.state.isAtLeast(Lifecycle.State.INITIALIZED)) // In case of error, the activity is destroyed and lose its INITIALIZED status.
+        // In case of error, the activity is destroyed and loses its INITIALIZED status.
+        Assert.assertTrue(activityScenario.scenario.state.isAtLeast(Lifecycle.State.INITIALIZED))
     }
 }

@@ -11,7 +11,7 @@ class StressTestHelper {
 
     companion object {
 
-        fun simulateRandomAction(numberOfActions: Int) {
+        fun simulateRandomActions(numberOfActions: Int) {
             // arrange
             val context: Context = InstrumentationRegistry.getInstrumentation().targetContext
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
